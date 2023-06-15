@@ -17,22 +17,19 @@ ORDER BY nom_acteur, prenom_acteur;
 ````
 
 La liste des actrices ou acteurs principaux pour un film donné :
-
 ````sql
 
 ````
 
 La liste des films pour une actrice ou un acteur donné :
-
 ````sql
 
 ````
 
 Ajouter un film :
-
 ````sql
 INSERT INTO film (id_film, titre, nombre_acteur, realisteur, duree, annee_sortie)
-VALUES (1, 'ironman', 5, 'Jon Favreau', '01:26:00', '2008-07-08');
+VALUES (1, 'ironman', 40, 'Jon Favreau', '01:26:00', '2008-07-08');
 ````
 
 Ajouter une actrice ou un acteur :
@@ -51,4 +48,14 @@ WHERE id_film = 3;
 
 Supprimer une actrice ou un acteur :
 ````sql
+DELETE FROM acteur
+WHERE id_acteur = 2;
+````
 
+Afficher les 3 derniers acteurs/actrices ajouté(e)s :
+````sql
+SELECT nom_acteur, prenom_acteur
+FROM acteur
+ORDER BY id_acteur DESC
+LIMIT 3;
+````
