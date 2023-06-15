@@ -18,12 +18,21 @@ ORDER BY nom_acteur, prenom_acteur;
 
 La liste des actrices ou acteurs principaux pour un film donné :
 ````sql
-
+SELECT a.nom_acteur, a.prenom_acteur
+FROM acteur a
+JOIN Jouer j ON a.id_acteur = j.id_acteur
+JOIN film f ON f.id_film = j.id_film
+WHERE f.titre = 'Titre du film'
+AND a.role_acteur = 'Principal';
 ````
 
 La liste des films pour une actrice ou un acteur donné :
 ````sql
-
+SELECT f.titre
+FROM film f
+JOIN Jouer j ON f.id_film = j.id_film
+JOIN acteur a ON a.id_acteur = j.id_acteur
+WHERE CONCAT(a.nom_acteur, ' ', a.prenom_acteur) = 'Doe';
 ````
 
 Ajouter un film :
